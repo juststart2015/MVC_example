@@ -1,0 +1,20 @@
+入口文件：admin.php
+地址栏输入该地址，然后开始执行如下步骤：
+1、header，设置网页类型及编码类型
+2、session开启，用于记录用户登录信息
+3、引入config.php文件，该文件包含
+  a、viewconfig，定义了Smarty的左边界符，右边界符，以及模版和临时文件存放地址
+  b、dbconfig，定义了数据库的连接信息，主机、用户名、密码、数据库、编码集
+4、引入框架内的pc.php
+5、开始执行PC.php内的run函数，run函数执行以下操作
+  a、获取pc.php文件所在的地址，根据地址引入include.list.php，里面包含了各框架文件的地址
+  b、循环各地址并做引入操作
+  c、创建类PC，并定义几个静态属性
+  d、创建一个静态方法，innt_db，并初始化，进行数据库连接
+  e、创建一个静态方法，init_view,并初始化，进行视图引擎的配置
+  f、初始化控制器，并给予一个默认值，admin
+  g、初始化控制器，并给予一个默认值，test
+6、当初次登录主页时，未给予赋值，则使用默认值，admin控制器及test方法
+7、admin控制器，接收到指令，直接寻找test方法，test方法只进行了echo操作，所以就直接输出了hello
+
+涉及文件：admin.php、config.php、pc.php、include.list.php、DB.class.php、mysql.class.php、View.class.php、admincontroller.class.php
